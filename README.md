@@ -11,3 +11,6 @@
  - `npm & yarn install`
  - `npm & yarn start`
  - Go to http://localhost:3000 on your browser
+
+## Skipped Features
+- Didn't translate the whole project.
