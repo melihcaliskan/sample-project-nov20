@@ -67,11 +67,13 @@ const RouterLinks = () => {
   )
 }
 
-export const RightMenu = () => {
+export const RightMenu = ({ transparent }) => {
   const [userData, setUser] = useContext(UserContext);
   const { loggedIn } = userData;
   return (
-    <nav className="menu right-menu">
+    <nav
+      className="menu right-menu"
+      style={{ backgroundColor: transparent ? "transparent" : "#CDF0EA" }}>
 
       <div style={{ marginBottom: 24 }}>
         {loggedIn ?

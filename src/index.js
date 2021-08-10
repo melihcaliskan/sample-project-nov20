@@ -1,15 +1,12 @@
 import './index.css';
 
-import React from "react";
+import React, { useState } from "react";
 import ReactDOM from "react-dom";
-import {
-  BrowserRouter as Router,
-  Switch,
-  Route
-} from "react-router-dom";
+import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import i18n from "i18next";
 import { initReactI18next } from "react-i18next";
-import { Grid, Col } from '@mantine/core';
+import { IoMenu } from "react-icons/io5";
+import { Container, Drawer, Button, Group, Grid, Col } from '@mantine/core';
 import { useMediaQuery } from '@mantine/hooks';
 
 import { UserProvider } from "./contexts/User";
@@ -58,20 +55,69 @@ i18n
     fallbackLng: "en"
   });
 
+
+const MobileHeader = () => {
+  return (
+    <Container className="mobile-header">
+      <MobileLeftMenu />
+      <MobileRightMenu />
+    </Container>
+  )
+}
+
+const MobileLeftMenu = () => {
+  return (
+    <LeftMenu mobile />
+  )
+}
+
+const MobileRightMenu = () => {
+  const [opened, setOpened] = useState(false);
+
+  return (
+    <>
+      <Group position="center">
+        <Button
+          variant="outline"
+          onClick={() => setOpened(true)}>
+          <IoMenu />
+        </Button>
+      </Group>
+
+      <Drawer
+        opened={opened}
+        onClose={() => setOpened(false)}
+        position="right"
+        title="Right Menu"
+        size="md"
+      >
+        <RightMenu transparent />
+      </Drawer>
+    </>
+  )
+}
+
 function AppRouter() {
-  const isMobile = useMediaQuery('(max-width: 755px)');
-  const menuSpan = isMobile ? 12 : 2;
+  const isMobile = useMediaQuery('(max-width: 768px)');
+  const contentSpan = isMobile ? 12 : 8;
 
   return (
     <>
       <main>
         <Router>
 
+          {isMobile &&
+            <MobileHeader />
+          }
+
           <Grid>
-            <Col span={menuSpan}>
-              <LeftMenu />
-            </Col>
-            <Col span={8}>
+            {!isMobile &&
+              <Col span={2}>
+                <LeftMenu />
+              </Col>
+            }
+
+            <Col span={contentSpan}>
               <Switch>
                 <Route path="/contact">
                   <Contact />
@@ -81,9 +127,12 @@ function AppRouter() {
                 </Route>
               </Switch>
             </Col>
-            <Col span={menuSpan}>
-              <RightMenu />
-            </Col>
+
+            {!isMobile &&
+              <Col span={2}>
+                <RightMenu />
+              </Col>
+            }
           </Grid>
         </Router>
       </main>

@@ -1,3 +1,7 @@
+:root {
+  --bg: rgba(0,0,0,0.04);
+  --text-color: #464646;
+}
 body {
   display: flex;
   flex-direction: column;
@@ -12,7 +16,7 @@ body {
 }
 
 a[href^="/"] {
-  color: #464646;
+  color: var(--text-color);;
   margin: 5px 0;
   text-decoration: none;
   transition: 200ms all;
@@ -32,7 +36,7 @@ input {
 
 footer {
   height: 10vh;
-  background-color: rgba(0, 0, 0, 0.04);
+  background-color: var(--bg);
 }
 
 .menu {
@@ -40,19 +44,24 @@ footer {
   padding: 16px;
 }
 
-.left-menu {
-  background-color: #F6C6EA;
-}
-
 .right-menu {
   display: flex;
   flex-direction: column;
   align-items: center;
-  background-color: #CDF0EA;
 }
 
 hr {
   width: 100%;
   border: 0px;
   border-top: 1px solid white;
+}
+
+.mantine-drawer-header{
+  padding: 15px;
+}
+
+.mobile-header {
+  display:flex;
+  justify-content: space-between;
+  background-color: var(--bg);
 }

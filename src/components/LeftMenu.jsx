@@ -7,7 +7,7 @@ const CurrentRoute = () => {
   const currentRoute = routes.filter(route => route.path === location.pathname)[0];
 
   return (
-    <>
+    <div>
       <h3>
         Current page:
       </h3>
@@ -15,13 +15,23 @@ const CurrentRoute = () => {
       <p>
         {currentRoute.name}
       </p>
-    </>
+    </div>
   )
 }
 
-export const LeftMenu = () => {
+export const LeftMenu = ({ transparent, mobile }) => {
+
+  if (mobile) {
+    return (
+      <CurrentRoute />
+    )
+  }
+
   return (
-    <nav className="menu left-menu">
+    <nav
+      className="menu"
+      style={{ backgroundColor: transparent ? "transparent" : "#F6C6EA" }}>
+
       <IoEaselOutline
         size={36}
       />
