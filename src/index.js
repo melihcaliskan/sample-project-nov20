@@ -56,15 +56,6 @@ i18n
   });
 
 
-const MobileHeader = () => {
-  return (
-    <Container className="mobile-header">
-      <MobileLeftMenu />
-      <MobileRightMenu />
-    </Container>
-  )
-}
-
 const MobileLeftMenu = () => {
   return (
     <LeftMenu mobile />
@@ -97,9 +88,22 @@ const MobileRightMenu = () => {
   )
 }
 
+const MobileHeader = () => {
+  return (
+    <Container className="mobile-header">
+      <MobileLeftMenu />
+      <MobileRightMenu />
+    </Container>
+  )
+}
+
+
 function AppRouter() {
+  const isLarge = useMediaQuery('(max-width: 1200px)');
   const isMobile = useMediaQuery('(max-width: 768px)');
-  const contentSpan = isMobile ? 12 : 8;
+
+  const contentSpan = isMobile ? 12 : isLarge ? 6 : 8;
+  const menuSpan = isLarge ? 3 : 2;
 
   return (
     <>
@@ -112,7 +116,7 @@ function AppRouter() {
 
           <Grid>
             {!isMobile &&
-              <Col span={2}>
+              <Col span={menuSpan}>
                 <LeftMenu />
               </Col>
             }
@@ -129,7 +133,7 @@ function AppRouter() {
             </Col>
 
             {!isMobile &&
-              <Col span={2}>
+              <Col span={menuSpan}>
                 <RightMenu />
               </Col>
             }

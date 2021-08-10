@@ -30,7 +30,7 @@ export const LeftMenu = ({ transparent, mobile }) => {
   return (
     <nav
       className="menu"
-      style={{ backgroundColor: transparent ? "transparent" : "#F6C6EA" }}>
+      style={{ backgroundColor: transparent ? "transparent" : "#fefff2" }}>
 
       <IoEaselOutline
         size={36}

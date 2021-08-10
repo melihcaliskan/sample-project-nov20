@@ -73,7 +73,7 @@ export const RightMenu = ({ transparent }) => {
   return (
     <nav
       className="menu right-menu"
-      style={{ backgroundColor: transparent ? "transparent" : "#CDF0EA" }}>
+      style={{ backgroundColor: transparent ? "transparent" : "#f2ffff" }}>
 
       <div style={{ marginBottom: 24 }}>
         {loggedIn ?
