@@ -1,11 +1,35 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import { useTranslation } from "react-i18next";
 import { Modal, InputWrapper, Button, Progress, Text, Popover, Input, Group } from '@mantine/core';
 import { IoPersonOutline, IoMailOutline } from "react-icons/io5";
-import { PasswordInput } from '../components/PasswordInput'
+import { LanguageSelector } from "../components/LanguageSelector";
+import { PasswordInput } from '../components/PasswordInput';
+import { UserContext } from "../contexts/User";
+import { loginRequest } from '../utils/http';
+
 export const LoginModal = () => {
   const { t } = useTranslation();
+  const [userData, setUser] = useContext(UserContext);
   const [opened, setOpened] = useState(false);
+
+  const [name, setName] = useState("");
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+
+  const isDisabled = !(name && email && password) ? true : false;
+
+  const login = () => {
+    loginRequest("data")
+
+    setUser({
+      type: "login",
+      payload: {
+        name,
+        email,
+        password
+      }
+    })
+  }
 
   return (
     <div>
@@ -16,29 +40,51 @@ export const LoginModal = () => {
         onClose={() => setOpened(false)}
         title={t('login')}>
 
-        <Group direction="column" grow>
+        <div style={{ display: 'flex', flexDirection: 'column' }}>
           <InputWrapper
             id="name"
-            required
-            error={t('name_incorrect')}>
+            required>
             <Input
               id="name"
               icon={<IoPersonOutline />}
-              placeholder={t('name')} />
+              placeholder={t('name')}
+              value={name}
+              onChange={(e) => setName(e.target.value)}
+            />
           </InputWrapper>
 
           <InputWrapper
             id="email"
-            required
-            error={t('email_incorrect')}>
+            required>
             <Input
               id="email"
               icon={<IoMailOutline />}
-              placeholder={t('email')} />
+              placeholder={t('email')}
+              value={email}
+              onChange={(e) => setEmail(e.target.value)} />
           </InputWrapper>
 
-          <PasswordInput />
-        </Group>
+          <InputWrapper
+            id="password"
+            required>
+            <PasswordInput
+              onChange={(value) => setPassword(value)}
+            />
+          </InputWrapper>
+
+          <Button
+            fullWidth
+            disabled={isDisabled}
+            onClick={login}
+            style={{ marginTop: 16 }}>
+            {t('login')}
+          </Button>
+
+          <hr />
+
+          <LanguageSelector />
+
+        </div>
       </Modal>
     </div>
   )
