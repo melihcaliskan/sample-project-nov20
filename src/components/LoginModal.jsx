@@ -1,6 +1,6 @@
 import React, { useContext, useState } from "react";
 import { useTranslation } from "react-i18next";
-import { Modal, InputWrapper, Button, Progress, Text, Popover, Input, Group } from '@mantine/core';
+import { Modal, InputWrapper, Button, Input } from '@mantine/core';
 import { IoPersonOutline, IoMailOutline } from "react-icons/io5";
 import { LanguageSelector } from "../components/LanguageSelector";
 import { PasswordInput } from '../components/PasswordInput';
