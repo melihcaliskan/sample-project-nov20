@@ -4,14 +4,14 @@ export const languageList = [
 ];
 
 export const countryList = [
-  { id: "TR", name: "Turkey" },
-  { id: "US", name: "United States of America" },
-  { id: "GB", name: "United Kingdom" },
-  { id: "DE", name: "Germany" },
-  { id: "SE", name: "Sweden" },
-  { id: "KE", name: "Kenya" },
-  { id: "BR", name: "Brazil" },
-  { id: "ZW", name: "Zimbabwe" }
+  { value: "TR", label: "Turkey" },
+  { value: "US", label: "United States of America" },
+  { value: "GB", label: "United Kingdom" },
+  { value: "DE", label: "Germany" },
+  { value: "SE", label: "Sweden" },
+  { value: "KE", label: "Kenya" },
+  { value: "BR", label: "Brazil" },
+  { value: "ZW", label: "Zimbabwe" }
 ];
 
 export const requirements = [
@@ -20,3 +20,8 @@ export const requirements = [
   { re: /[A-Z]/, label: 'Includes uppercase letter' },
   { re: /[$&+,:;=?@#|'<>.^*()%!-]/, label: 'Includes special symbol' },
 ];
+
+export const routes = [
+  { path: "/", name: "Sample Project" },
+  { path: "/contact", name: "Contact" },
+]
