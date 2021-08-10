@@ -1,6 +1,7 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
+import { useTranslation } from "react-i18next";
 import { PasswordInput as Input, Progress, Popover, Text } from '@mantine/core';
-import { IoPersonOutline, IoMailOutline } from "react-icons/io5";
+import { IoCheckmarkCircleSharp, IoCloseCircle } from "react-icons/io5";
 
 import { requirements } from '../utils/constants';
 import { getStrength } from '../utils/helpers';
@@ -12,17 +13,22 @@ const PasswordRequirement = ({ meets, label }) => {
       style={{ display: 'flex', alignItems: 'center', marginTop: 7 }}
       size="sm"
     >
-      {meets ? <IoPersonOutline /> : <IoMailOutline />} <span style={{ marginLeft: 10 }}>{label}</span>
+      {meets ? <IoCheckmarkCircleSharp /> : <IoCloseCircle />} <span style={{ marginLeft: 10 }}>{label}</span>
     </Text>
   );
 }
 
-export const PasswordInput = () => {
+export const PasswordInput = ({ onChange }) => {
+  const { t } = useTranslation();
   const [popoverOpened, setPopoverOpened] = useState(false);
   const [value, setValue] = useState('');
   const checks = requirements.map((requirement, index) => (
     <PasswordRequirement key={index} label={requirement.label} meets={requirement.re.test(value)} />
   ));
+
+  useEffect(() => {
+    onChange(value)
+  }, [value])
 
   const strength = getStrength(value);
   const color = strength === 100 ? 'teal' : strength > 50 ? 'yellow' : 'red';
@@ -41,9 +47,9 @@ export const PasswordInput = () => {
       target={
         <Input
           required
-          label="Your password"
-          placeholder="Your password"
-          description="Strong password should include letters in lower and uppercase, at least 1 number, at least 1 special symbol"
+          label={t('password')}
+          placeholder={t('password')}
+          description={t('strong_password')}
           value={value}
           onChange={(event) => setValue(event.currentTarget.value)}
         />
