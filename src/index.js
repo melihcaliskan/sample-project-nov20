@@ -33,6 +33,7 @@ i18n
           "password": "Şifre",
           "strong_password": "Strong password should include letters in lower and uppercase, at least 1 number, at least 1 special symbol",
           "send": "Send",
+          "current_page": "Current Page"
         }
       },
       tr: {
@@ -48,6 +49,7 @@ i18n
           "password": "Şifre",
           "strong_password": "Şifre küçük harf, büyük harf, en az 1 rakam, en az 1 özel sembol içermelidir.",
           "send": "Gönder",
+          "current_page": "Şuanki Sayfa"
         }
       }
     },
