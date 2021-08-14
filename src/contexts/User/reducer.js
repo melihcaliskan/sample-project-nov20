@@ -21,7 +21,6 @@ export const reducer = (state, action) => {
 
 export const initialState = {
   loggedIn: false,
-  id: "",
   name: "",
   email: ""
 }

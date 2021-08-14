@@ -1,11 +1,11 @@
 import './i18n';
 import './index.css';
 
-import React, { useState, Suspense } from "react";
+import React, { useState } from "react";
 import ReactDOM from "react-dom";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import { IoMenu } from "react-icons/io5";
-import { Container, Drawer, Button, Group, Grid, Col } from '@mantine/core';
+import { Drawer, Button, Group, Grid, Col } from '@mantine/core';
 import { useMediaQuery } from '@mantine/hooks';
 
 import { UserProvider } from "./contexts/User";
@@ -49,13 +49,12 @@ const MobileRightMenu = () => {
 
 const MobileHeader = () => {
   return (
-    <Container className="mobile-header">
+    <div className="mobile-header">
       <MobileLeftMenu />
       <MobileRightMenu />
-    </Container>
+    </div>
   )
 }
-
 
 function AppRouter() {
   const isLarge = useMediaQuery('(max-width: 1200px)');
@@ -65,56 +64,56 @@ function AppRouter() {
   const menuSpan = isLarge ? 3 : 2;
 
   return (
-    <>
-      <main>
-        <Router>
+    <div className="app">
+      <Router>
+        {isMobile &&
+          <MobileHeader />
+        }
 
-          {isMobile &&
-            <MobileHeader />
+        <Grid gutter={0}>
+          {!isMobile &&
+            <Col span={menuSpan}>
+              <LeftMenu />
+            </Col>
           }
 
-          <Grid>
-            {!isMobile &&
-              <Col span={menuSpan}>
-                <LeftMenu />
-              </Col>
-            }
+          <Col span={contentSpan}>
+            <Switch>
+              <Route path="/contact">
+                <Contact />
+              </Route>
+              <Route path="/">
+                <Home />
+              </Route>
+            </Switch>
+          </Col>
 
-            <Col span={contentSpan}>
-              <Switch>
-                <Route path="/contact">
-                  <Contact />
-                </Route>
-                <Route path="/">
-                  <Home />
-                </Route>
-              </Switch>
+          {!isMobile &&
+            <Col span={menuSpan}>
+              <RightMenu />
             </Col>
+          }
+        </Grid>
+      </Router>
+    </div>
+  )
+}
 
-            {!isMobile &&
-              <Col span={menuSpan}>
-                <RightMenu />
-              </Col>
-            }
-          </Grid>
-        </Router>
-      </main>
+function Main() {
+  return (
+    <main>
+      <AppRouter />
       <Footer />
-    </>
+    </main>
   )
 }
 
 function App() {
   return (
     <UserProvider>
-      <AppRouter />
+      <Main />
     </UserProvider>
   );
 }
 
-ReactDOM.render(
-  <Suspense fallback={<p>Loading...</p>}>
-    <App />
-  </Suspense>,
-  document.getElementById("root")
-);
+ReactDOM.render(<App />, document.getElementById("root"));

@@ -1,67 +1,75 @@
 :root {
-  --bg: rgba(0,0,0,0.04);
-  --text-color: #464646;
+    --bg: rgba(0, 0, 0, 0.04);
+    --text-color: #464646;
 }
-body {
-  display: flex;
-  flex-direction: column;
-  overflow: hidden;
 
-  margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+body {
+    margin: 0;
+    padding: 0;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
 }
 
 a[href^="/"] {
-  color: var(--text-color);;
-  margin: 5px 0;
-  text-decoration: none;
-  transition: 200ms all;
+    color: var(--text-color);
+    margin: 5px 0;
+    text-decoration: none;
+    transition: 200ms all;
 }
 
 a[href^="/"]:hover {
-  font-weight: bold;
-}
-
-main {
-  height: 90vh;
+    font-weight: bold;
 }
 
 input {
-  margin-bottom: 16px;
+    margin-bottom: 16px;
 }
 
-footer {
-  height: 10vh;
-  background-color: var(--bg);
+main {
+    min-height: 100vh;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+
+    align-items: stretch;
+}
+
+.app {
+    flex: 1;
 }
 
 .menu {
-  height: 95vh;
-  padding: 16px;
+    display: flex;
+    flex-direction: column;
+
+    min-height: 90vh;
+    padding: 16px;
 }
 
 .right-menu {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
+    align-items: center;
+}
+
+footer {
+    padding: 16px;
+    background-color: var(--bg);
 }
 
 hr {
-  width: 100%;
-  border: 0px;
-  border-top: 1px solid white;
+    width: 100%;
+    border: 0px;
+    border-top: 1px solid white;
 }
 
-.mantine-drawer-header{
-  padding: 15px;
+.mantine-drawer-header {
+    padding: 15px;
 }
 
 .mobile-header {
-  display:flex;
-  justify-content: space-between;
-  background-color: var(--bg);
+    display: flex;
+    padding: 0 16px;
+    justify-content: space-between;
+    background-color: var(--bg);
 }
