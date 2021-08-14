@@ -15,7 +15,7 @@ const CurrentRoute = () => {
       </h3>
 
       <p>
-        {currentRoute.name}
+        {t(currentRoute.translateKey)}
       </p>
     </div>
   )
