@@ -1,11 +1,12 @@
 import React, { useContext } from 'react';
 import { useTranslation } from "react-i18next";
-import { Button, Menu, MenuItem, MenuLabel, Divider, Text } from '@mantine/core';
+import { Button, Menu, MenuItem, MenuLabel, Divider } from '@mantine/core';
 import { IoPersonOutline, IoLogOutOutline } from "react-icons/io5";
 import { Link } from "react-router-dom";
 import { UserContext } from "../contexts/User";
 import LanguageSelector from './LanguageSelector';
 import LoginModal from './LoginModal';
+import { routes } from '../utils/constants';
 
 const Dropdown = ({ userData, logOut }) => {
   const { name } = userData;
@@ -61,8 +62,16 @@ const RouterLinks = () => {
   const { t } = useTranslation();
   return (
     <>
-      <Link to="/">{t('home')}</Link>
-      <Link to="/contact">{t('contact')}</Link>
+      {routes.map((route, idx) => {
+        const { path, translateKey } = route;
+        return (
+          <Link
+            key={idx}
+            to={path}>
+            {t(translateKey)}
+          </Link>
+        )
+      })}
     </>
   )
 }

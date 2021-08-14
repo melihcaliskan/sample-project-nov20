@@ -22,6 +22,6 @@ export const requirements = [
 ];
 
 export const routes = [
-  { path: "/", name: "Sample Project" },
-  { path: "/contact", name: "Contact" },
+  { path: "/", translateKey: "home" },
+  { path: "/contact", translateKey: "contact" },
 ]
