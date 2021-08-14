@@ -9,17 +9,17 @@ import LoginModal from './LoginModal';
 import { routes } from '../utils/constants';
 
 const Dropdown = ({ userData, logOut }) => {
-  const { name } = userData;
+  const { email, name } = userData;
   return (
     <Menu
       style={{ width: "100%" }}
       control={
         <Button fullWidth>
-          Menu
+          {name}
         </Button>
       }>
       <MenuItem icon={<IoPersonOutline />}>
-        {name}
+        {email}
       </MenuItem>
 
       <Divider />
@@ -84,13 +84,7 @@ export const RightMenu = ({ transparent }) => {
       className="menu right-menu"
       style={{ backgroundColor: transparent ? "transparent" : "#f2ffff" }}>
 
-      <div style={{ marginBottom: 24 }}>
-        {loggedIn ?
-          <LoggedInMenu />
-          :
-          <LoginModal />
-        }
-      </div>
+      <RouterLinks />
 
       <hr />
 
@@ -98,7 +92,13 @@ export const RightMenu = ({ transparent }) => {
 
       <hr />
 
-      <RouterLinks />
+      <div style={{ marginBottom: 24 }}>
+        {loggedIn ?
+          <LoggedInMenu />
+          :
+          <LoginModal />
+        }
+      </div>
     </nav>
   )
 }
