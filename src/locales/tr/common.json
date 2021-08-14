@@ -1,0 +1,13 @@
+{
+  "home": "Örnek Uygulama",
+  "contact": "İletişim",
+  "lorem": "In pulvinar eros auctor orci rutrum, in egestas ante consequat. Vivamus non nisl eu odio viverra finibus et id enim. Proin sagittis turpis eu sodales porta.",
+  "login": "Giriş Yap",
+  "name": "İsim",
+  "email": "E-posta",
+  "email_incorrect": "Your e-mail is incorrect",
+  "password": "Şifre",
+  "strong_password": "Şifre küçük harf, büyük harf, en az 1 rakam, en az 1 özel sembol içermelidir.",
+  "send": "Gönder",
+  "current_page": "Şuanki Sayfa"
+}

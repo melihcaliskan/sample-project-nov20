@@ -1,0 +1,13 @@
+{
+  "home": "Sample App",
+  "contact": "Contact",
+  "lorem": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas in convallis lectus, et feugiat velit. Curabitur et est tincidunt, tincidunt erat et, dictum sem. Aliquam mollis orci id congue blandit.",
+  "login": "Login",
+  "name": "Name",
+  "email": "E-mail",
+  "email_incorrect": "Your e-mail is incorrect",
+  "password": "Şifre",
+  "strong_password": "Strong password should include letters in lower and uppercase, at least 1 number, at least 1 special symbol",
+  "send": "Send",
+  "current_page": "Current Page"
+}
