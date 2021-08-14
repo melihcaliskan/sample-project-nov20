@@ -12,8 +12,8 @@ export const LoginModal = () => {
   const [userData, setUser] = useContext(UserContext);
   const [opened, setOpened] = useState(false);
 
-  const [name, setName] = useState("");
-  const [email, setEmail] = useState("");
+  const [name, setName] = useState(userData?.name || "");
+  const [email, setEmail] = useState(userData?.email || "");
   const [password, setPassword] = useState("");
 
   const isDisabled = !(name && email && password) ? true : false;
