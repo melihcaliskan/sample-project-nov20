@@ -12,8 +12,8 @@ export const LoginModal = () => {
   const [userData, setUser] = useContext(UserContext);
   const [opened, setOpened] = useState(false);
 
-  const [name, setName] = useState(userData?.name || "");
-  const [email, setEmail] = useState(userData?.email || "");
+  const [name, setName] = useState("");
+  const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
   const isDisabled = !(name && email && password) ? true : false;
@@ -48,7 +48,7 @@ export const LoginModal = () => {
               id="name"
               icon={<IoPersonOutline />}
               placeholder={t('name')}
-              value={name}
+              value={userData?.name || name}
               onChange={(e) => setName(e.target.value)}
             />
           </InputWrapper>
@@ -60,7 +60,7 @@ export const LoginModal = () => {
               id="email"
               icon={<IoMailOutline />}
               placeholder={t('email')}
-              value={email}
+              value={userData?.email || email}
               onChange={(e) => setEmail(e.target.value)} />
           </InputWrapper>
 
