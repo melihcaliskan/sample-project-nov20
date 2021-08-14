@@ -15,10 +15,10 @@ export const Contact = () => {
   const [country_code, setCountryCode] = useState("");
   const [text, setText] = useState();
 
-  const [emailValid, setEmailValid] = useState(true);
-  const [phoneValid, setPhoneValid] = useState(true);
+  const [emailValid, setEmailValid] = useState(false);
+  const [phoneValid, setPhoneValid] = useState(false);
 
-  const isDisabled = !(name && email && phonenumber && country_code && text & emailValid & phoneValid) ? true : false;
+  const isDisabled = !(name && email && emailValid && phonenumber && phoneValid && country_code && text) ? true : false;
 
   const send = () => {
 
@@ -84,7 +84,7 @@ export const Contact = () => {
         required
         value={email}
         onChange={(e) => setEmail(e.target.value)}
-        error={!emailValid}
+        error={email?.length > 0 && !emailValid}
       />
 
       <TextInput
@@ -94,7 +94,7 @@ export const Contact = () => {
         required
         value={phonenumber}
         onChange={(e) => setPhoneNumber(e.target.value)}
-        error={!phoneValid}
+        error={phonenumber?.length > 0 && !phoneValid}
       />
 
       <Select
