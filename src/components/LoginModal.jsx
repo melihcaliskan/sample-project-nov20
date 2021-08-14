@@ -1,4 +1,4 @@
-import React, { useContext, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { useTranslation } from "react-i18next";
 import { Modal, InputWrapper, Button, Input } from '@mantine/core';
 import { IoPersonOutline, IoMailOutline } from "react-icons/io5";
@@ -15,6 +15,12 @@ export const LoginModal = () => {
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+
+  useEffect(() => {
+    const { email, name } = userData;
+    setName(name);
+    setEmail(email);
+  }, [userData])
 
   const isDisabled = !(name && email && password) ? true : false;
 
@@ -48,7 +54,7 @@ export const LoginModal = () => {
               id="name"
               icon={<IoPersonOutline />}
               placeholder={t('name')}
-              value={userData?.name || name}
+              value={name}
               onChange={(e) => setName(e.target.value)}
             />
           </InputWrapper>
@@ -60,7 +66,7 @@ export const LoginModal = () => {
               id="email"
               icon={<IoMailOutline />}
               placeholder={t('email')}
-              value={userData?.email || email}
+              value={email}
               onChange={(e) => setEmail(e.target.value)} />
           </InputWrapper>
 
