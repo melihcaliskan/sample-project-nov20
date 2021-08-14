@@ -13,11 +13,9 @@ export const reducer = (state, action) => {
         ...action.payload,
       }
     case "logout":
-      return {
-        initialState,
-      }
+      return initialState;
     default:
-      return state
+      return state;
   }
 }
 
